@@ -14,13 +14,23 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
 
 set(CMAKE_CXX_FLAGS  ${CMAKE_CXX_FLAGS}  "-std=c++11")
 
+
+
 if(APPLE)
 
 else()
-  set(CSOUND_INCLUDE_DIR  "C:/Program Files/Csound6_x64/include/csound")
-  set(CSOUND_LIB  "C:/Program Files/Csound6_x64/lib/csound64.lib")
-  set(LIBSNDFILE_INCLUDE_DIR "C:/Program Files/Mega-Nerd/libsndfile/include")
-  set(LIBSNDFILE_LIB "C:/Program Files/Mega-Nerd/libsndfile/lib/libsndfile-1.lib")
+  if(NOT CSOUND_INCLUDE_DIR)
+    set(CSOUND_INCLUDE_DIR  "C:/Program Files/Csound6_x64/include/csound")
+  endif()
+  if(NOT CSOUND_LIB)
+    set(CSOUND_LIB  "C:/Program Files/Csound6_x64/lib/csound64.lib")
+  endif()
+  if(NOT LIBSNDFILE_INCLUDE_DIR)
+    set(LIBSNDFILE_INCLUDE_DIR "C:/Program Files/Mega-Nerd/libsndfile/include")
+  endif()
+  if(NOT LIBSNDFILE_LIB)
+    set(LIBSNDFILE_LIB "C:/Program Files/Mega-Nerd/libsndfile/lib/libsndfile-1.lib")
+  endif()
 endif()
 
 
