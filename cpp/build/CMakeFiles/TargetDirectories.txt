@@ -1,3 +1,0 @@
-/Users/walshr/sourcecode/csoundAPI_examples/cpp/build/CMakeFiles/rebuild_cache.dir
-/Users/walshr/sourcecode/csoundAPI_examples/cpp/build/CMakeFiles/edit_cache.dir
-/Users/walshr/sourcecode/csoundAPI_examples/cpp/build/CMakeFiles/GetChannelExample,.dir

@@ -19,7 +19,7 @@ int main()
 Csound* csound = new Csound();
 
 //compile instance of csound.
-csound->Compile("test2.csd");
+csound->Compile("../test2.csd");
 
 //prepare Csound for performance
 csound->Start();

@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--+rtaudio=jack -odac
+-odac
 </CsOptions>
 <CsInstruments>
 sr=44100

@@ -24,7 +24,7 @@ using namespace std;
 
 int main()
 {
-MYFLT *spin, NOT_USED(*spout);
+MYFLT *spin /* *spout */;
 int sampleCount=0;
 
 //For sake of simplicity we are generating a simple waveform.
@@ -40,10 +40,10 @@ for(int i=0;i<44100;i++)
 Csound* csound = new Csound();
 
 //compile instance of csound.
-csound->Compile("test8.csd");
+csound->Compile("../test8.csd");
 
 //access Csound's input/output buffer
-spout = csound->GetSpout();
+//spout = csound->GetSpout(); //not used here
 spin  = csound->GetSpin();
 
 //start Csound performance

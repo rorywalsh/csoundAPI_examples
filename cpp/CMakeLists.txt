@@ -14,13 +14,40 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
 
 set(CMAKE_CXX_FLAGS  ${CMAKE_CXX_FLAGS}  "-std=c++11")
 
-add_executable(SetChannelExample ${CMAKE_CURRENT_SOURCE_DIR}/SetChannelExample.cpp)
+if(APPLE)
 
-function(make_app appName srcs)
-  
-  target_link_libraries(${appName} ${CSOUND_LIB})
-  target_include_directories(${appName} PRIVATE ${CSOUND_INCLUDE_DIRS})
+else()
+  set(CSOUND_INCLUDE_DIR  "C:/Program Files/Csound6_x64/include/csound")
+  set(CSOUND_LIB  "C:/Program Files/Csound6_x64/lib/csound64.lib")
+  set(LIBSNDFILE_INCLUDE_DIR "C:/Program Files/Mega-Nerd/libsndfile/include")
+  set(LIBSNDFILE_LIB "C:/Program Files/Mega-Nerd/libsndfile/lib/libsndfile-1.lib")
+endif()
+
+
+function(make_api_app appName srcs)
+  message("${srcs}")
+  add_executable(${appName} ${srcs})
+  if(APPLE)
+
+  else()
+  target_link_libraries(${appName} ${CSOUND_LIB} ${LIBSNDFILE_LIB})
+  target_include_directories(${appName} PRIVATE ${CSOUND_INCLUDE_DIR} ${LIBSNDFILE_INCLUDE_DIR})
+  endif()
 endfunction(make_app)
 
-make_app(SetChannelExample, ${CMAKE_CURRENT_SOURCE_DIR}/SetChannelExample.cpp)
+make_api_app(SetChannelExample "${CMAKE_CURRENT_SOURCE_DIR}/SetChannelExample.cpp;${CSOUND_INCLUDE_DIR}/csPerfThread.cpp" )
+make_api_app(csPerfThreadExample "${CMAKE_CURRENT_SOURCE_DIR}/csPerfThreadExample.cpp;${CSOUND_INCLUDE_DIR}/csPerfThread.cpp" )
+make_api_app(CsoundMessageBuffer "${CMAKE_CURRENT_SOURCE_DIR}/CsoundMessageBuffer.cpp")
+make_api_app(GenerativeScoreExample "${CMAKE_CURRENT_SOURCE_DIR}/GenerativeScoreExample.cpp;${CSOUND_INCLUDE_DIR}/csPerfThread.cpp")
+make_api_app(GetSpoutExample "${CMAKE_CURRENT_SOURCE_DIR}/GetSpoutExample.cpp")
+make_api_app(GetStringChannelExample "${CMAKE_CURRENT_SOURCE_DIR}/GetStringChannelExample.cpp")
+make_api_app(SimpleCsdPlayback "${CMAKE_CURRENT_SOURCE_DIR}/SimpleCsdPlayback.cpp")
+make_api_app(SimpleCsdTextPlayback "${CMAKE_CURRENT_SOURCE_DIR}/SimpleCsdTextPlayback.cpp")
+make_api_app(StringOrcScoPlayback "${CMAKE_CURRENT_SOURCE_DIR}/StringOrcScoPlayback.cpp")
+make_api_app(DummyCsThread "${CMAKE_CURRENT_SOURCE_DIR}/DummyCsThread.cpp;${CSOUND_INCLUDE_DIR}/csPerfThread.cpp")
+make_api_app(DummyNonCsThread "${CMAKE_CURRENT_SOURCE_DIR}/DummyNonCsThread.cpp")
+
+
+
+
 
